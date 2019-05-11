@@ -3,9 +3,9 @@
 // Change this to "import Hapi from "hapi""
 const Hapi = require("hapi");
 
-const { graphqlHapi, graphiqlHapi } = require("apollo-server-hapi")
+const { graphqlHapi, graphiqlHapi } = require("apollo-server-hapi");
 
-const schema = require('./graphql/schema')
+const schema = require("./graphql/schema");
 
 // Create a server with a host and port
 const server = Hapi.server({
@@ -13,35 +13,33 @@ const server = Hapi.server({
 });
 
 // Start the server
-const start = async function () {
+const start = async function() {
   try {
-
     await server.register({
       plugin: graphiqlHapi,
       options: {
-        path: '/ordersiql',
+        path: "/ordersiql",
         graphiqlOptions: {
-          endpointURL: '/orders'
+          endpointURL: "/orders"
         },
         route: {
           cors: true
         }
       }
-    })
+    });
 
     await server.register({
       plugin: graphqlHapi,
       options: {
-        path: '/orders',
+        path: "/orders",
         graphqlOptions: { schema },
         route: { cors: true }
       }
-    })
+    });
 
     console.log("Starting server...");
     await server.start();
   } catch (err) {
-
     await connection.end();
     console.log(err);
     process.exit(1);
