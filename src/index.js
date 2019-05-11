@@ -19,9 +19,9 @@ const start = async function () {
     await server.register({
       plugin: graphiqlHapi,
       options: {
-        path: '/ordersiql',
+        path: '/ordenesi',
         graphiqlOptions: {
-          endpointURL: '/orders'
+          endpointURL: '/ordenes'
         },
         route: {
           cors: true
