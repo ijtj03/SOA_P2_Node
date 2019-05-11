@@ -31,7 +31,7 @@ const start = async function() {
     await server.register({
       plugin: graphqlHapi,
       options: {
-        path: "/orders",
+        path: "/ordenes",
         graphqlOptions: { schema },
         route: { cors: true }
       }
